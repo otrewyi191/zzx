@@ -1,0 +1,1 @@
+docker run -dt --name ssclient -p 1080:1080 mritd/shadowsocks -m "ss-local" -s "-s 127.0.0.1 -p 6500 -b 0.0.0.0 -l 1080 -m aes-256-cfb -k test123 --fast-open" -x -e "kcpclient" -k "-r 104.200.25.49:6500 -l :6500 -mode fast2"
