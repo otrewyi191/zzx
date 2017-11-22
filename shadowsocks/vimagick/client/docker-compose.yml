@@ -1,6 +1,6 @@
 client:
   image: vimagick/shadowsocks-libev
-  command: ss-local -s foobar.site -p 8388 -b 0.0.0.0 -l 1080 -k secret -m chacha20
+  command: ss-local -s 104.200.25.49 -p 8388 -b 0.0.0.0 -l 1080 -k secret -m chacha20
   ports:
     - "1080:1080"
   restart: always
