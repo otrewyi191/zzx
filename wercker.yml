@@ -24,15 +24,6 @@ dev:
         steps:
                 # Sets the go workspace and places you package
                 # at the right place in the workspace tree
-                - setup-go-workspace:
-                        package-dir: ./
-
-                        # Gets the dependencies
-                - script:
-                        name: env
-                        code: env
-
-                        # Build the project
                 - script:
                         name: go get
                         code: echo "hi"
