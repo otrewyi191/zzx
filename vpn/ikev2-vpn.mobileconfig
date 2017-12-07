@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Read more: https://wiki.strongswan.org/projects/strongswan/wiki/AppleIKEv2Profile -->
+<plist version="1.0">
+    <dict>
+        <!-- Set the name to whatever you like, it is used in the profile list on the device -->
+        <key>PayloadDisplayName</key>
+        <string>My IKEv2 VPN Profile</string>
+        <!-- This is a reverse-DNS style unique identifier used to detect duplicate profiles -->
+        <key>PayloadIdentifier</key>
+        <string>49.25.200.104</string>
+        <!-- A globally unique identifier, use uuidgen on Linux/Mac OS X to generate it -->
+        <key>PayloadUUID</key>
+        <string>5920b155781e</string>
+        <key>PayloadType</key>
+        <string>Configuration</string>
+        <key>PayloadVersion</key>
+        <integer>1</integer>
+        <key>PayloadContent</key>
+        <array>
+            <!-- It is possible to add multiple VPN payloads with different identifiers/UUIDs and names -->
+            <dict>
+                <!-- This is an extension of the identifier given above -->
+                <key>PayloadIdentifier</key>
+                <string>49.25.200.104.shared-configuration</string>
+                <!-- A globally unique identifier for this payload -->
+                <key>PayloadUUID</key>
+                <string>e7704583-44da-4b11-8975-f464a832bb03</string>
+                <key>PayloadType</key>
+                <string>com.apple.vpn.managed</string>
+                <key>PayloadVersion</key>
+                <integer>1</integer>
+                <!-- This is the name of the VPN connection as seen in the VPN application later -->
+                <key>UserDefinedName</key>
+                <string>My IKEv2 VPN</string>
+                <key>VPNType</key>
+                <string>IKEv2</string>
+                <key>IKEv2</key>
+                <dict>
+                    <!-- Hostname or IP address of the VPN server -->
+                    <key>RemoteAddress</key>
+                    <string>104.200.25.49</string>
+                    <!-- Remote identity, can be a FQDN, a userFQDN, an IP or (theoretically) a certificate's subject DN. Can't be empty.
+                     IMPORTANT: DNs are currently not handled correctly, they are always sent as identities of type FQDN -->
+                    <key>RemoteIdentifier</key>
+                    <string>104.200.25.49</string>
+                    <!-- Local IKE identity, same restrictions as above. If it is empty the client's IP address will be used -->
+                    <key>LocalIdentifier</key>
+                    <string></string>
+                    <!--
+                    OnDemand references:
+                    http://www.v2ex.com/t/137653
+                    https://developer.apple.com/library/mac/featuredarticles/iPhoneConfigurationProfileRef/Introduction/Introduction.html
+
+                    Continue reading:
+                    https://github.com/iphoting/ovpnmcgen.rb
+                    -->
+                    <key>OnDemandEnabled</key>
+                    <integer>1</integer>
+                    <key>OnDemandRules</key>
+                    <array>
+                        <dict>
+                            <key>Action</key>
+                            <string>Connect</string>
+                        </dict>
+                    </array>
+                    <!-- The server is authenticated using a certificate -->
+                    <key>AuthenticationMethod</key>
+                    <string>SharedSecret</string>
+                    <key>SharedSecret</key>
+                    <string>123+6n3d1OiQH7mUxBre/ovvxBN6dHKTdQUaynm0/6CK9g=</string>
+                    <!-- Turn off EAP -->
+                    <key>ExtendedAuthEnabled</key>
+                    <integer>0</integer>
+                    <!-- AuthName key is required to dismiss the Enter Username screen on iOS 9, even if ExtendedAuthEnabled is false -->
+                    <key>AuthName</key>
+                    <string></string>
+                    <!-- AuthPassword key is required to dismiss the Enter Password screen on iOS 9, even if ExtendedAuthEnabled is false -->
+                    <key>AuthPassword</key>
+                    <string></string>
+                </dict>
+            </dict>
+        </array>
+    </dict>
+</plist>
