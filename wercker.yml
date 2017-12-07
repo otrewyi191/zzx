@@ -25,7 +25,7 @@ dev:
                 # Sets the go workspace and places you package
                 # at the right place in the workspace tree
                 - setup-go-workspace:
-                        package-dir: github.com/cloudnativego/hello
+                        package-dir: ./
 
                         # Gets the dependencies
                 - script:
